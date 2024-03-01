@@ -45,20 +45,18 @@
     ( ?Puri "_funktor" ) string:concatenation ?Pz .
     ?Pfunc log:uri ?Pz .
 
+    # Package the old body into the new head
     ?G log:equalTo { ?GS ?GP ?GO } .
+    (
+      { (?S ?O) ?Pgetter true } 
+      ?G
+    ) graph:union ?Magic .
 }
 =>
 {
     { ?X ?Pfunc ?Y } => { ?X ?P ?Y }.
 
-    { 
-        (?X ?Y) ?Pgetter true .
-        ?X ?GP ?Y .
-    } 
-    => 
-    { 
-        ?X ?Pfunc ?Y 
-    } .
+    ?Magic => { ?S ?Pfunc ?O  } .
 
     { 
         (?X ?Y) ?Pdata true .

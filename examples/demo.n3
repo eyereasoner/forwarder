@@ -7,11 +7,12 @@
 } 
 :backward 
 {
-    ?X math:greaterThan ?Y
+    ?X math:greaterThan ?Y .
+    ?Y math:greaterThan 0 .
 }.
 
 {
-    5 :moreInterestingThan 3 .
+    5 :moreInterestingThan 1 .
 } 
 => {
     :test :is true
