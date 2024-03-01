@@ -1,0 +1,30 @@
+@prefix math: <http://www.w3.org/2000/10/swap/math#> .
+@prefix log: <http://www.w3.org/2000/10/swap/log#> .
+@prefix : <http://example.org/ns#>.
+
+:Alice :foo :Bar .
+:Bob :bar :Foo .
+
+{
+    ?X :hasFoo true  .
+} 
+:backward 
+{
+    ?X :foo ?Y .
+} .
+
+{
+    ?X :hasFoo true  .
+} 
+:backward
+{
+    ?X :bar ?Y .
+} .
+
+{
+    ?Who :hasFoo true .
+}
+=> 
+{
+    :result :is ?Who .
+} .

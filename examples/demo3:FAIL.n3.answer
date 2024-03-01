@@ -6,37 +6,43 @@
 } => true.
 
 {
-    ?U_20 :append_funktor ?U_21.
+    ?U_15 :append_funktor ?U_16.
 } => {
-    ?U_20 :append ?U_21.
+    ?U_15 :append ?U_16.
 }.
 
 {
     {
-        ((?U_2 ?U_3) ?U_4) :append_get true.
+        ((() ?U_2) ?U_2) :append_get true.
     } => true.
-    ?U_2 list:firstRest (?U_5 ?U_6).
-    ?U_4 list:firstRest (?U_5 ?U_7).
-    (?U_6 ?U_3) :append ?U_7.
 } => {
-    (?U_2 ?U_3) :append_funktor ?U_4.
+    (() ?U_2) :append_funktor ?U_2.
 }.
 
 {
     {
-        (?U_22 ?U_23) :append_data true.
+        (?U_17 ?U_18) :append_data true.
     } => true.
 } => {
     {
-        (?U_22 ?U_23) :append_get true.
+        (?U_17 ?U_18) :append_get true.
     } => true.
 }.
 
 {
-    ((?U_10 ?U_13) ?U_12) :append_data true.
+    {
+        ((?U_3 ?U_4) ?U_5) :append_get true.
+    } => true.
+    ?U_3 list:firstRest (?U_6 ?U_7).
+    ?U_5 list:firstRest (?U_6 ?U_8).
+} => {
+    (?U_3 ?U_4) :append_funktor ?U_5.
+}.
+
+{
+    ((() ?U_19) (1 2 3 4 5)) :append_get true.
 } => true.
 
-{
-    ((() ?U_24) (1 2 3 4 5)) :append_get true.
-} => true.
-
+(() (1 2 3 4 5)) :append_funktor (1 2 3 4 5).
+(() (1 2 3 4 5)) :append (1 2 3 4 5).
+_:sk_9 :with (1 2 3 4 5).
