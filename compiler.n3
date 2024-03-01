@@ -23,7 +23,8 @@
 } 
 =>
 {
-    # Create a triple
+    # Create a triple .. using a { ?S ?P ?O } => true trick to
+    # keep possible variables in ?S ?P ?O available as variables
     { (?S ?O) ?Pdata true } => true .
 } .
 
