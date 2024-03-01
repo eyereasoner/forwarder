@@ -16,9 +16,9 @@
     # Do we have a backward rule for this ?P 
     { ?X ?P ?Y } :backward ?H .
 
-    # Create a getterData
+    # Create a data name
     ?P log:uri ?Puri .
-    ( ?Puri "_getdata" ) string:concatenation ?Py .
+    ( ?Puri "_data" ) string:concatenation ?Py .
     ?Pdata log:uri ?Py .
 } 
 =>
@@ -33,12 +33,12 @@
 
     ?P log:uri ?Puri .
 
-    # Create a getterName
+    # Create a getter name
     ( ?Puri "_get" ) string:concatenation ?Px .
     ?Pgetter log:uri ?Px .
 
-    # Create a getterData
-    ( ?Puri "_getdata" ) string:concatenation ?Py .
+    # Create a data name
+    ( ?Puri "_data" ) string:concatenation ?Py .
     ?Pdata log:uri ?Py .
 
     # Create a functor name
