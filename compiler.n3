@@ -1,0 +1,71 @@
+	
+@prefix math: <http://www.w3.org/2000/10/swap/math#>.
+@prefix string: <http://www.w3.org/2000/10/swap/string#>.
+@prefix graph: <http://www.w3.org/2000/10/swap/graph#>.
+@prefix log: <http://www.w3.org/2000/10/swap/log#>.
+@prefix : <http://example.org/ns#>.
+
+## Compiler
+
+# Search for forward rules
+# ... For each triple check if the predicate is available as a backward rule
+# ... If this is the case, then create a getter triple for the subject/object
+{
+    ?F => ?G .
+    ?F log:includes { ?S ?P ?O } .
+    # Do we have a backward rule for this ?P 
+    { ?X ?P ?Y } :backward ?H .
+
+    # Create a getterData
+    ?P log:uri ?Puri .
+    ( ?Puri "_getdata" ) string:concatenation ?Py .
+    ?Pdata log:uri ?Py .
+} 
+=>
+{
+    # Create a triple
+    (?S ?O) ?Pdata true .
+} .
+
+# Transform the backward rule into a getter
+{
+    { ?S ?P ?O } :backward ?G .
+
+    ?P log:uri ?Puri .
+
+    # Create a getterName
+    ( ?Puri "_get" ) string:concatenation ?Px .
+    ?Pgetter log:uri ?Px .
+
+    # Create a getterData
+    ( ?Puri "_getdata" ) string:concatenation ?Py .
+    ?Pdata log:uri ?Py .
+
+    # Create a functor name
+    ( ?Puri "_funktor" ) string:concatenation ?Pz .
+    ?Pfunc log:uri ?Pz .
+
+    ?G log:equalTo { ?GS ?GP ?GO } .
+}
+=>
+{
+    { ?X ?Pfunc ?Y } => { ?X ?P ?Y }.
+
+    { 
+        (?X ?Y) ?Pgetter true .
+        ?X ?GP ?Y .
+    } 
+    => 
+    { 
+        ?X ?Pfunc ?Y 
+    } .
+
+    { 
+        (?X ?Y) ?Pdata true .
+    } 
+    => 
+    { 
+        (?X ?Y) ?Pgetter true 
+    } .
+}.
+
