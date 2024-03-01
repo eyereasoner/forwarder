@@ -12,6 +12,10 @@
 }.
 
 {
+    # add some noise 
+    true log:equalTo true .
+
+    # tha forwarded backward rule
     5 :moreInterestingThan 1 .
 } 
 => {
