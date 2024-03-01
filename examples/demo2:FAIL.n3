@@ -1,0 +1,22 @@
+@prefix math: <http://www.w3.org/2000/10/swap/math#>.
+@prefix log: <http://www.w3.org/2000/10/swap/log#>.
+@prefix : <http://example.org/ns#>.
+
+:Alice :hasCar :Beetle .
+:Bob :hasCar :Volvo .
+:Charly :hasMotor :BMW .
+
+{ 
+    ?X :ownsCar true .
+} 
+:backward
+{
+    ?X :hasCar ?Y .
+}.
+
+{
+    ?X :ownsCar true .
+} 
+=> {
+    :test :is ?X . 
+}.
