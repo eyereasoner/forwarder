@@ -1,0 +1,42 @@
+@prefix : <http://example.org/ns#>.
+@prefix list: <http://www.w3.org/2000/10/swap/list#>.
+
+{
+    ((() ?U_0) (1 2 3 4 5)) :append_data true.
+} => true.
+
+{
+    ?U_20 :append_funktor ?U_21.
+} => {
+    ?U_20 :append ?U_21.
+}.
+
+{
+    {
+        ((?U_2 ?U_3) ?U_4) :append_get true.
+    } => true.
+    ?U_2 list:firstRest (?U_5 ?U_6).
+    ?U_4 list:firstRest (?U_5 ?U_7).
+    (?U_6 ?U_3) :append ?U_7.
+} => {
+    (?U_2 ?U_3) :append_funktor ?U_4.
+}.
+
+{
+    {
+        (?U_22 ?U_23) :append_data true.
+    } => true.
+} => {
+    {
+        (?U_22 ?U_23) :append_get true.
+    } => true.
+}.
+
+{
+    ((?U_10 ?U_13) ?U_12) :append_data true.
+} => true.
+
+{
+    ((() ?U_24) (1 2 3 4 5)) :append_get true.
+} => true.
+

@@ -1,0 +1,25 @@
+@prefix list: <http://www.w3.org/2000/10/swap/list#> .
+@prefix : <http://example.org/ns#>.
+
+{
+    (() ?x) :append ?x
+} 
+:backward {}.
+
+{
+    (?y ?x) :append ?z .
+} 
+:backward 
+{
+    ?y list:firstRest (?f  ?rest) . 
+    ?z list:firstRest (?f ?z2) . 
+    (?rest ?x) :append ?z2 .
+} .
+
+{
+    (() ?y) :append (1 2 3 4 5) .
+} 
+=> 
+{
+    :test :with ?y .
+} .
