@@ -1,0 +1,41 @@
+@prefix : <http://example.org/ns#>.
+
+{
+    (?U_0 true) :ownsCar_data true.
+} => true.
+
+{
+    ?U_10 :ownsCar_funktor ?U_11.
+} => {
+    ?U_10 :ownsCar ?U_11.
+}.
+
+{
+    {
+        (?U_3 true) :ownsCar_get true.
+    } => true.
+    ?U_3 :hasCar ?U_4.
+} => {
+    ?U_3 :ownsCar_funktor true.
+}.
+
+{
+    {
+        (?U_12 ?U_13) :ownsCar_data true.
+    } => true.
+} => {
+    {
+        (?U_12 ?U_13) :ownsCar_get true.
+    } => true.
+}.
+
+{
+    (?U_14 true) :ownsCar_get true.
+} => true.
+
+:Alice :ownsCar_funktor true.
+:Bob :ownsCar_funktor true.
+:Alice :ownsCar true.
+:Bob :ownsCar true.
+:test :is :Alice.
+:test :is :Bob.

@@ -1,7 +1,10 @@
 @prefix : <http://example.org/ns#>.
 @prefix math: <http://www.w3.org/2000/10/swap/math#>.
 
-(5 1) :moreInterestingThan_data true.
+{
+    (5 1) :moreInterestingThan_data true.
+} => true.
+
 {
     ?U_8 :moreInterestingThan_funktor ?U_9.
 } => {
@@ -9,7 +12,9 @@
 }.
 
 {
-    (?U_2 ?U_3) :moreInterestingThan_get true.
+    {
+        (?U_2 ?U_3) :moreInterestingThan_get true.
+    } => true.
     ?U_2 math:greaterThan ?U_3.
     ?U_3 math:greaterThan 0.
 } => {
@@ -17,12 +22,19 @@
 }.
 
 {
-    (?U_10 ?U_11) :moreInterestingThan_data true.
+    {
+        (?U_10 ?U_11) :moreInterestingThan_data true.
+    } => true.
 } => {
-    (?U_10 ?U_11) :moreInterestingThan_get true.
+    {
+        (?U_10 ?U_11) :moreInterestingThan_get true.
+    } => true.
 }.
 
-(5 1) :moreInterestingThan_get true.
+{
+    (5 1) :moreInterestingThan_get true.
+} => true.
+
 5 :moreInterestingThan_funktor 1 .
 5 :moreInterestingThan 1 .
 :test :is true.

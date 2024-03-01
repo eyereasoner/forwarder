@@ -24,7 +24,7 @@
 =>
 {
     # Create a triple
-    (?S ?O) ?Pdata true .
+    { (?S ?O) ?Pdata true } => true .
 } .
 
 # Transform the backward rule into a getter
@@ -48,7 +48,7 @@
     # Package the old body into the new head
     ?G log:equalTo { ?GS ?GP ?GO } .
     (
-      { (?S ?O) ?Pgetter true } 
+      { { (?S ?O) ?Pgetter true } => true } 
       ?G
     ) graph:union ?Magic .
 }
@@ -59,11 +59,11 @@
     ?Magic => { ?S ?Pfunc ?O  } .
 
     { 
-        (?X ?Y) ?Pdata true .
+        { (?X ?Y) ?Pdata true } => true .
     } 
     => 
     { 
-        (?X ?Y) ?Pgetter true 
+        { (?X ?Y) ?Pgetter true } => true .
     } .
 }.
 
