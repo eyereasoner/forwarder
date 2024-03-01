@@ -1,0 +1,53 @@
+@prefix : <http://example.org/ns#>.
+@prefix math: <http://www.w3.org/2000/10/swap/math#>.
+
+{
+    ((?U_0 10) true) :hasFoo_data true.
+} => true.
+
+{
+    ?U_18 :hasFoo_funktor ?U_19.
+} => {
+    ?U_18 :hasFoo ?U_19.
+}.
+
+{
+    {
+        ((?U_2 0) true) :hasFoo_get true.
+    } => true.
+} => {
+    (?U_2 0) :hasFoo_funktor true.
+}.
+
+{
+    {
+        (?U_20 ?U_21) :hasFoo_data true.
+    } => true.
+} => {
+    {
+        (?U_20 ?U_21) :hasFoo_get true.
+    } => true.
+}.
+
+{
+    {
+        ((?U_3 ?U_4) true) :hasFoo_get true.
+    } => true.
+    ?U_4 math:greaterThan 0 .
+    (?U_4 -1) math:sum ?U_5.
+    ?U_3 :foo ?U_6.
+    (?U_3 ?U_5) :hasFoo true.
+} => {
+    (?U_3 ?U_4) :hasFoo_funktor true.
+}.
+
+{
+    ((?U_9 ?U_8) true) :hasFoo_data true.
+} => true.
+
+{
+    ((?U_22 10) true) :hasFoo_get true.
+} => true.
+
+(_:sk_12 0) :hasFoo_funktor true.
+(_:sk_12 0) :hasFoo true.
