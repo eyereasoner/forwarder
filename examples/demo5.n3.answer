@@ -1,0 +1,73 @@
+@prefix : <http://example.org/ns#>.
+
+{
+    (?U_0 true) :hasFoo_data true.
+} => true.
+
+{
+    ?U_18 :hasFoo_funktor ?U_19.
+} => {
+    ?U_18 :hasFoo ?U_19.
+}.
+
+{
+    {
+        (?U_2 true) :hasFoo_get true.
+    } => true.
+    ?U_2 :hasBar true.
+} => {
+    ?U_2 :hasFoo_funktor true.
+}.
+
+{
+    {
+        (?U_20 ?U_21) :hasFoo_data true.
+    } => true.
+} => {
+    {
+        (?U_20 ?U_21) :hasFoo_get true.
+    } => true.
+}.
+
+{
+    ?U_22 :hasBar_funktor ?U_23.
+} => {
+    ?U_22 :hasBar ?U_23.
+}.
+
+{
+    {
+        (?U_3 true) :hasBar_get true.
+    } => true.
+    ?U_3 :bar ?U_4.
+} => {
+    ?U_3 :hasBar_funktor true.
+}.
+
+{
+    {
+        (?U_24 ?U_25) :hasBar_data true.
+    } => true.
+} => {
+    {
+        (?U_24 ?U_25) :hasBar_get true.
+    } => true.
+}.
+
+{
+    (?U_5 true) :hasBar_data true.
+} => true.
+
+{
+    (?U_26 true) :hasFoo_get true.
+} => true.
+
+{
+    (?U_27 true) :hasBar_get true.
+} => true.
+
+:Bob :hasBar_funktor true.
+:Bob :hasBar true.
+:Bob :hasFoo_funktor true.
+:Bob :hasFoo true.
+:result :is :Bob.
