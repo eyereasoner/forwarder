@@ -5,33 +5,15 @@
 ### Data
 
 :Alice :foo :Bar .
-:Bob :bar :Foo .
 
 ### Backward -> Forward
-
-
-
-{
-    ?U_18 :hasFoo_funktor ?U_19.
-    [] log:trace "rule1" .
-} => {
-    ?U_18 :hasFoo ?U_19.
-}.
-
-{
-    {
-        false log:equalTo true.
-        ((?U_2 0) true) :hasFoo_get true.
-    } => true.
-} => {
-    (?U_2 0) :hasFoo_funktor true.
-}.
 
 {
     {
         false log:equalTo true.
         (?U_20 ?U_21) :hasFoo_data true.
     } => true.
+    [] log:trace "saw hasFoo_data => need hasFoo_get".
 } => {
     {
         false log:equalTo true.
@@ -42,35 +24,68 @@
 {
     {
         false log:equalTo true.
+        ((?U_2 0) true) :hasFoo_get true.
+    } => true.
+    #####---NEW-- 
+    ?U_2 log:equalTo :Alice .
+    #####---NEW--END     
+    [] log:trace (?U_2 0 "hasFoo_get & solved (backward 1 a) => hasFoo_funktor answer" ).
+} => {
+    (?U_2 0) :hasFoo_funktor true.
+}.
+
+{
+    {
+        false log:equalTo true.
         ((?U_3 ?U_4) true) :hasFoo_get true.
     } => true.
     ?U_4 math:greaterThan 0 .
     (?U_4 -1) math:sum ?U_5.
     ?U_3 :foo ?U_6.
+    [] log:trace (?U_3 ?U_5 "hasFoo_get & solving (backward 1 b) ..." ).
     (?U_3 ?U_5) :hasFoo true.
+    [] log:trace (?U_3 ?U_4 "hasFoo_get & solved (backward 1 b) => hasFoo_funktor answer" ).
 } => {
     (?U_3 ?U_4) :hasFoo_funktor true.
 }.
 
 {
+    ?U_18 :hasFoo_funktor ?U_19.
+    [] log:trace "hasFoo_functor exists => conclude hasFoo" .
+} => {
+    ?U_18 :hasFoo ?U_19.
+}.
+
+# Generated data query by inspecting the main forward rule
+# if we want to know '?Who :hasFoo true .' in the head then we need to search
+# for :hasFoo_data solution
+{
     false log:equalTo true.
-    ((?U_9 ?U_8) true) :hasFoo_data true.
+    ((?U_0 3) true) :hasFoo_data true.
+} => true.
+
+#####---NEW-- these need to be generated...
+{
+    false log:equalTo true.
+    ((?X 2) true) :hasFoo_data true.
 } => true.
 
 {
     false log:equalTo true.
-    ((?U_22 10) true) :hasFoo_get true.
+    ((?U_9 1) true) :hasFoo_data true.
 } => true.
 
 {
     false log:equalTo true.
-    ((?U_0 10) true) :hasFoo_data true.
+    ((?U_9 0) true) :hasFoo_data true.
 } => true.
+
+#####---NEW-- END
 
 ### Query
 
 {
-    (?Who 10) :hasFoo true .
+    (?Who 3) :hasFoo true .
 }
 => 
 {
