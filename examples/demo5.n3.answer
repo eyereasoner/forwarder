@@ -1,7 +1,9 @@
 @prefix : <http://example.org/ns#>.
+@prefix log: <http://www.w3.org/2000/10/swap/log#>.
 
 {
     (?U_0 true) :hasFoo_data true.
+    false log:equalTo true.
 } => true.
 
 {
@@ -13,6 +15,7 @@
 {
     {
         (?U_2 true) :hasFoo_get true.
+        false log:equalTo true.
     } => true.
     ?U_2 :hasBar true.
 } => {
@@ -22,10 +25,12 @@
 {
     {
         (?U_20 ?U_21) :hasFoo_data true.
+        false log:equalTo true.
     } => true.
 } => {
     {
         (?U_20 ?U_21) :hasFoo_get true.
+        false log:equalTo true.
     } => true.
 }.
 
@@ -38,6 +43,7 @@
 {
     {
         (?U_3 true) :hasBar_get true.
+        false log:equalTo true.
     } => true.
     ?U_3 :bar ?U_4.
 } => {
@@ -47,23 +53,28 @@
 {
     {
         (?U_24 ?U_25) :hasBar_data true.
+        false log:equalTo true.
     } => true.
 } => {
     {
         (?U_24 ?U_25) :hasBar_get true.
+        false log:equalTo true.
     } => true.
 }.
 
 {
     (?U_5 true) :hasBar_data true.
+    false log:equalTo true.
 } => true.
 
 {
     (?U_26 true) :hasFoo_get true.
+    false log:equalTo true.
 } => true.
 
 {
     (?U_27 true) :hasBar_get true.
+    false log:equalTo true.
 } => true.
 
 :Bob :hasBar_funktor true.

@@ -1,8 +1,10 @@
 @prefix : <http://example.org/ns#>.
+@prefix log: <http://www.w3.org/2000/10/swap/log#>.
 @prefix math: <http://www.w3.org/2000/10/swap/math#>.
 
 {
     ((?U_0 10) true) :hasFoo_data true.
+    false log:equalTo true.
 } => true.
 
 {
@@ -14,6 +16,7 @@
 {
     {
         ((?U_2 0) true) :hasFoo_get true.
+        false log:equalTo true.
     } => true.
 } => {
     (?U_2 0) :hasFoo_funktor true.
@@ -22,16 +25,19 @@
 {
     {
         (?U_20 ?U_21) :hasFoo_data true.
+        false log:equalTo true.
     } => true.
 } => {
     {
         (?U_20 ?U_21) :hasFoo_get true.
+        false log:equalTo true.
     } => true.
 }.
 
 {
     {
         ((?U_3 ?U_4) true) :hasFoo_get true.
+        false log:equalTo true.
     } => true.
     ?U_4 math:greaterThan 0 .
     (?U_4 -1) math:sum ?U_5.
@@ -43,10 +49,12 @@
 
 {
     ((?U_9 ?U_8) true) :hasFoo_data true.
+    false log:equalTo true.
 } => true.
 
 {
     ((?U_22 10) true) :hasFoo_get true.
+    false log:equalTo true.
 } => true.
 
 (_:sk_12 0) :hasFoo_funktor true.

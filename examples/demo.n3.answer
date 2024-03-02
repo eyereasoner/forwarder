@@ -1,8 +1,10 @@
 @prefix : <http://example.org/ns#>.
+@prefix log: <http://www.w3.org/2000/10/swap/log#>.
 @prefix math: <http://www.w3.org/2000/10/swap/math#>.
 
 {
     (5 1) :moreInterestingThan_data true.
+    false log:equalTo true.
 } => true.
 
 {
@@ -14,6 +16,7 @@
 {
     {
         (?U_2 ?U_3) :moreInterestingThan_get true.
+        false log:equalTo true.
     } => true.
     ?U_2 math:greaterThan ?U_3.
     ?U_3 math:greaterThan 0.
@@ -24,15 +27,18 @@
 {
     {
         (?U_10 ?U_11) :moreInterestingThan_data true.
+        false log:equalTo true.
     } => true.
 } => {
     {
         (?U_10 ?U_11) :moreInterestingThan_get true.
+        false log:equalTo true.
     } => true.
 }.
 
 {
     (5 1) :moreInterestingThan_get true.
+    false log:equalTo true.
 } => true.
 
 5 :moreInterestingThan_funktor 1 .
