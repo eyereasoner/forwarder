@@ -1,9 +1,9 @@
-@prefix : <http://example.org/ns#>.
 @prefix log: <http://www.w3.org/2000/10/swap/log#>.
+@prefix : <http://example.org/ns#>.
 
 {
-    (?U_0 true) :ownsCar_data true.
     false log:equalTo true.
+    (?U_0 true) :ownsCar_data true.
 } => true.
 
 {
@@ -14,8 +14,8 @@
 
 {
     {
-        (?U_3 true) :ownsCar_get true.
         false log:equalTo true.
+        (?U_3 true) :ownsCar_get true.
     } => true.
     ?U_3 :hasCar ?U_4.
 } => {
@@ -24,19 +24,19 @@
 
 {
     {
-        (?U_12 ?U_13) :ownsCar_data true.
         false log:equalTo true.
+        (?U_12 ?U_13) :ownsCar_data true.
     } => true.
 } => {
     {
-        (?U_12 ?U_13) :ownsCar_get true.
         false log:equalTo true.
+        (?U_12 ?U_13) :ownsCar_get true.
     } => true.
 }.
 
 {
-    (?U_14 true) :ownsCar_get true.
     false log:equalTo true.
+    (?U_14 true) :ownsCar_get true.
 } => true.
 
 :Alice :ownsCar_funktor true.

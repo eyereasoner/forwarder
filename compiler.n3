@@ -23,10 +23,10 @@
 } 
 =>
 {
-    # Create a triple .. using a { ?S ?P ?O . false log:equalTo true } => true trick to
+    # Create a triple .. using a { false log:equalTo true . ?S ?P ?O } => true trick to
     # keep possible variables in ?S ?P ?O available as variables.
     # The (false log:equalTo true) trick is used to stop this rule from firing
-    { (?S ?O) ?Pdata true . false log:equalTo true  } => true .
+    { false log:equalTo true . (?S ?O) ?Pdata true } => true .
 } .
 
 # Transform the backward rule into a getter
@@ -49,7 +49,7 @@
 
     # Package the old body into the new head
     (
-      { { (?S ?O) ?Pgetter true . false log:equalTo true  } => true } 
+      { { false log:equalTo true . (?S ?O) ?Pgetter true } => true } 
       ?G
     ) graph:union ?Magic .
 }
@@ -60,10 +60,10 @@
     ?Magic => { ?S ?Pfunc ?O  } .
 
     { 
-        { (?X ?Y) ?Pdata true . false log:equalTo true  } => true .
+        { false log:equalTo true . (?X ?Y) ?Pdata true . } => true .
     } 
     => 
     { 
-        { (?X ?Y) ?Pgetter true . false log:equalTo true  } => true .
+        { false log:equalTo true . (?X ?Y) ?Pgetter true . } => true .
     } .
 }.
