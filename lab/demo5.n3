@@ -3,79 +3,94 @@
 
 ### Data
 
-:Alice :foo :Bar .
+#:Alice :foo :Bar .
 :Bob :bar :Foo .
 
 ### Backward -> Forward
 
 {
-    ?U_16 :hasFoo_funktor ?U_17.
-    [] log:trace "rule1" .
-} => {
-    ?U_16 :hasFoo ?U_17.
-}.
-
-{
     {
-        (?U_2 true) :hasFoo_get true.
+        false log:equalTo true.
+        (?X ?Y) :hasFoo_data true.
     } => true.
-    ?U_2 :hasBar true.
-    [] log:trace "rule2" .
-} => {
-    ?U_2 :hasFoo_funktor true.
-}.
-
-{
-    {
-        (?U_18 ?U_19) :hasFoo_data true.
-    } :genvalue true.
-    [] log:trace "rule3" .
+    [] log:trace "saw hasFoo_data => need hasFoo_get".
 } => {
     {
-        (?U_18 ?U_19) :hasFoo_get true.
+        false log:equalTo true.
+        (?X ?Y) :hasFoo_get true.
     } => true.
 }.
 
 {
-    ?U_20 :hasBar_funktor ?U_21.
-    [] log:trace "rule4" .
+    {
+        false log:equalTo true.
+        (?U_24 ?U_25) :hasBar_data true.
+    } => true.
+    [] log:trace "saw hasBar_data => need hasBar_get" .
 } => {
-    ?U_20 :hasBar ?U_21.
+    {
+        false log:equalTo true.
+        (?U_24 ?U_25) :hasBar_get true.
+    } => true.
 }.
 
 {
     {
+        false log:equalTo true.
         (?U_3 true) :hasBar_get true.
     } => true.
     ?U_3 :bar ?U_4.
-    [] log:trace "rule5" .
+    [] log:trace "hasBar_get & solved (backward 1 logic) => hasBar_funktor answer" .
 } => {
     ?U_3 :hasBar_funktor true.
 }.
 
 {
-    {
-        (?U_22 ?U_23) :hasBar_data true.
-    } :genvalue true.
-    [] log:trace "rule6" .
+    ?U_18 :hasFoo_funktor ?U_19.
+    [] log:trace "hasFoo_funktor exists => conclude hasFoo" .
 } => {
-    {
-        (?U_22 ?U_23) :hasBar_get true.
-    } => true.
+    ?U_18 :hasFoo ?U_19.
 }.
 
 {
-    (?U_0 true) :hasFoo_get true.
-} => true.
+    ?U_22 :hasBar_funktor ?U_23.
+    [] log:trace "hasBar_functor exists => conclude hasBar" .
+} => {
+    ?U_22 :hasBar ?U_23.
+}.
 
 {
-    (?U_5 true) :hasBar_get true.
+    {
+        false log:equalTo true.
+        (?U_2 true) :hasFoo_get true.
+    } => true.
+    ?U_2 :hasBar true.
+    [] log:trace "hasFoo_get & solved (backward 2 logic) => hasFoo_funktor answer" .
+} => {
+    ?U_2 :hasFoo_funktor true.
+}.
+
+# Generated data query by precompile inspecting the main forward rule
+# if we want to know '?Who :hasFoo true .' in the head then we need to search
+# for :hasFoo_data solution
+{
+    false log:equalTo true.
+    (?U_0 true) :hasFoo_data true.
 } => true.
 
-### Query
+# Generated data query by precompile inspecting the main backward rules
+# if we want to know `?X :hasBar true .` in the body then we need to search
+# for a hasBar_data solution
+{
+    false log:equalTo true.
+    (?U_5 true) :hasBar_data true.
+} => true.
+
+### Main Query
 
 {
     ?Who :hasFoo true .
+    [] log:trace "**DONE**" .
 }
 => 
 {

@@ -9,51 +9,62 @@
 
 ### Backward -> Forward
 
+
+
 {
-    ((_:sk_0 10) true) :hasFoo_data true.
+    ?U_18 :hasFoo_funktor ?U_19.
     [] log:trace "rule1" .
-} :genvalue true.
-{
-    ?U_11 :hasFoo_funktor ?U_12.
 } => {
-    ?U_11 :hasFoo ?U_12.
+    ?U_18 :hasFoo ?U_19.
 }.
 
 {
     {
+        false log:equalTo true.
         ((?U_2 0) true) :hasFoo_get true.
     } => true.
-    [] log:trace "rule2" .
 } => {
     (?U_2 0) :hasFoo_funktor true.
 }.
 
 {
     {
-        (?U_13 ?U_14) :hasFoo_data true.
-    } :genvalue true.
-    [] log:trace "rule3" .
+        false log:equalTo true.
+        (?U_20 ?U_21) :hasFoo_data true.
+    } => true.
 } => {
     {
-        (?U_13 ?U_14) :hasFoo_get true.
+        false log:equalTo true.
+        (?U_20 ?U_21) :hasFoo_get true.
     } => true.
 }.
 
 {
     {
+        false log:equalTo true.
         ((?U_3 ?U_4) true) :hasFoo_get true.
     } => true.
     ?U_4 math:greaterThan 0 .
     (?U_4 -1) math:sum ?U_5.
     ?U_3 :foo ?U_6.
     (?U_3 ?U_5) :hasFoo true.
-    [] log:trace "rule4" .
 } => {
     (?U_3 ?U_4) :hasFoo_funktor true.
 }.
 
 {
-    ((?U_0 10) true) :hasFoo_get true.
+    false log:equalTo true.
+    ((?U_9 ?U_8) true) :hasFoo_data true.
+} => true.
+
+{
+    false log:equalTo true.
+    ((?U_22 10) true) :hasFoo_get true.
+} => true.
+
+{
+    false log:equalTo true.
+    ((?U_0 10) true) :hasFoo_data true.
 } => true.
 
 ### Query
