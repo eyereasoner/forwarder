@@ -17,6 +17,15 @@
 {
     ?X :ownsCar true .
 } 
-=> {
-    :test :is ?X . 
+=> 
+{
+    :result :is ?X . 
 }.
+
+{
+    :result :is :Alice, :Bob .
+}
+=>
+{
+    :test :is true .
+} .

@@ -71,3 +71,4 @@
 :Bob :hasFoo_funktor true.
 :Bob :hasFoo true.
 :result :is :Bob.
+:test :is true.

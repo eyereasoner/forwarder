@@ -7,4 +7,4 @@ if [ "${FILE}" == "" ]; then
     exit 1
 fi
 
-eye --nope --quiet --pass-only-new compiler.n3 $FILE
+timeout 2s eye --nope --quiet --pass-only-new compiler.n3 $FILE

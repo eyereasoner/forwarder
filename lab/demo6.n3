@@ -1,0 +1,67 @@
+@prefix : <http://example.org/ns#>.
+@prefix math: <http://www.w3.org/2000/10/swap/math#>.
+@prefix log: <http://www.w3.org/2000/10/swap/log#>.
+
+### Data
+
+:Alice :foo :Bar .
+:Bob :bar :Foo .
+
+### Backward -> Forward
+
+{
+    ((_:sk_0 10) true) :hasFoo_data true.
+    [] log:trace "rule1" .
+} :genvalue true.
+{
+    ?U_11 :hasFoo_funktor ?U_12.
+} => {
+    ?U_11 :hasFoo ?U_12.
+}.
+
+{
+    {
+        ((?U_2 0) true) :hasFoo_get true.
+    } => true.
+    [] log:trace "rule2" .
+} => {
+    (?U_2 0) :hasFoo_funktor true.
+}.
+
+{
+    {
+        (?U_13 ?U_14) :hasFoo_data true.
+    } :genvalue true.
+    [] log:trace "rule3" .
+} => {
+    {
+        (?U_13 ?U_14) :hasFoo_get true.
+    } => true.
+}.
+
+{
+    {
+        ((?U_3 ?U_4) true) :hasFoo_get true.
+    } => true.
+    ?U_4 math:greaterThan 0 .
+    (?U_4 -1) math:sum ?U_5.
+    ?U_3 :foo ?U_6.
+    (?U_3 ?U_5) :hasFoo true.
+    [] log:trace "rule4" .
+} => {
+    (?U_3 ?U_4) :hasFoo_funktor true.
+}.
+
+{
+    ((?U_0 10) true) :hasFoo_get true.
+} => true.
+
+### Query
+
+{
+    (?Who 10) :hasFoo true .
+}
+=> 
+{
+    :result :is ?Who .
+} .

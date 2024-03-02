@@ -1,0 +1,83 @@
+@prefix : <http://example.org/ns#>.
+@prefix log: <http://www.w3.org/2000/10/swap/log#>.
+
+### Data
+
+:Alice :foo :Bar .
+:Bob :bar :Foo .
+
+### Backward -> Forward
+
+{
+    ?U_16 :hasFoo_funktor ?U_17.
+    [] log:trace "rule1" .
+} => {
+    ?U_16 :hasFoo ?U_17.
+}.
+
+{
+    {
+        (?U_2 true) :hasFoo_get true.
+    } => true.
+    ?U_2 :hasBar true.
+    [] log:trace "rule2" .
+} => {
+    ?U_2 :hasFoo_funktor true.
+}.
+
+{
+    {
+        (?U_18 ?U_19) :hasFoo_data true.
+    } :genvalue true.
+    [] log:trace "rule3" .
+} => {
+    {
+        (?U_18 ?U_19) :hasFoo_get true.
+    } => true.
+}.
+
+{
+    ?U_20 :hasBar_funktor ?U_21.
+    [] log:trace "rule4" .
+} => {
+    ?U_20 :hasBar ?U_21.
+}.
+
+{
+    {
+        (?U_3 true) :hasBar_get true.
+    } => true.
+    ?U_3 :bar ?U_4.
+    [] log:trace "rule5" .
+} => {
+    ?U_3 :hasBar_funktor true.
+}.
+
+{
+    {
+        (?U_22 ?U_23) :hasBar_data true.
+    } :genvalue true.
+    [] log:trace "rule6" .
+} => {
+    {
+        (?U_22 ?U_23) :hasBar_get true.
+    } => true.
+}.
+
+{
+    (?U_0 true) :hasFoo_get true.
+} => true.
+
+{
+    (?U_5 true) :hasBar_get true.
+} => true.
+
+### Query
+
+{
+    ?Who :hasFoo true .
+}
+=> 
+{
+    :result :is ?Who .
+} .

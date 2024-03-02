@@ -37,5 +37,6 @@
 :Bob :ownsCar_funktor true.
 :Alice :ownsCar true.
 :Bob :ownsCar true.
-:test :is :Alice.
-:test :is :Bob.
+:result :is :Alice.
+:result :is :Bob.
+:test :is true.

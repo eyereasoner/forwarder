@@ -48,3 +48,4 @@
 :Alice :hasFoo true.
 :result :is :Bob.
 :result :is :Alice.
+:test :is true.

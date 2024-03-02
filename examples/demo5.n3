@@ -28,3 +28,11 @@
 {
     :result :is ?Who .
 } .
+
+{
+    :result :is :Bob .
+}
+=>
+{
+    :test :is true .
+} .

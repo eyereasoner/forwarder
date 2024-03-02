@@ -13,7 +13,7 @@
 {
     ?y list:firstRest (?f  ?rest) . 
     ?z list:firstRest (?f ?z2) . 
-   # (?rest ?x) :append ?z2 .  ## This will cause infinite loop
+    (?rest ?x) :append ?z2 .  ## This will cause infinite loop
 } .
 
 {
